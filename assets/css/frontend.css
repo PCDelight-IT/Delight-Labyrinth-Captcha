@@ -1,0 +1,185 @@
+/* ===========================================
+   Allgemeiner Wrapper
+=========================================== */
+.pcd-path-captcha-wrapper {
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 380px;
+    width: 100%;
+}
+
+/* Alignment Optionen */
+.pcd-path-captcha-wrapper.pcd-align-left {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+.pcd-path-captcha-wrapper.pcd-align-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.pcd-path-captcha-wrapper.pcd-align-right {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+/* ===========================================
+   Maze Anzeige (oben)
+=========================================== */
+.pcd-maze-canvas {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid #ccc;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Maze-Grid fixieren — Overlay bleibt frei skalierbar */
+.pcd-maze-canvas > svg:not(.pcd-maze-path-layer) {
+    width: 120px !important;
+    height: 120px !important;
+    flex-shrink: 0;
+}
+
+/* Overlay-Pfad */
+.pcd-maze-canvas .pcd-maze-path-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* ===========================================
+   Dropzone (optional)
+=========================================== */
+.pcd-path-dropzone {
+    width: 100%;
+    min-height: 70px;
+    border: 2px dashed #555;
+    background: #f5f5f5;
+    border-radius: 6px;
+    text-align: center;
+    padding: 20px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    transition: all 0.25s ease;
+}
+
+.pcd-path-dropzone-hover {
+    background: #e8f0ff;
+    border-color: #2980b9 !important;
+}
+
+.pcd-path-correct {
+    background: #d8f6d8 !important;
+    border-color: #27ae60 !important;
+}
+
+.pcd-path-incorrect {
+    background: #ffe5e5 !important;
+    border-color: #c0392b !important;
+}
+
+/* ===========================================
+   Pfade unten – kompakt & pixelgenau
+=========================================== */
+.pcd-path-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0px;
+    min-height: 70px;
+    height: 80px; /* genug Platz */
+}
+
+.pcd-path {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pcd-path svg {
+    display: block;
+    background: transparent !important;
+    pointer-events: none;
+}
+
+.pcd-path:hover {
+    filter: brightness(1.1);
+}
+
+.pcd-path-selected {
+    outline: 2px solid #2980b9;
+    border-radius: 4px;
+}
+
+/* WICHTIG:
+   transform: scale(0.5) wurde entfernt!
+   → Skalierung erfolgt korrekt über echtes SVG-Scaling im JS
+*/
+
+/* ===========================================
+   Statusanzeige
+=========================================== */
+.pcd-labyrinth-status {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 4px;
+    min-height: 22px;
+}
+
+.pcd-status-ok {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.pcd-status-error {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* ===========================================
+   Mobile optimiert
+=========================================== */
+@media (max-width: 480px) {
+    .pcd-maze-canvas {
+        padding: 8px;
+    }
+
+    .pcd-path {
+        padding: 0 !important;
+    }
+
+    .pcd-path svg {
+        width: auto !important;
+        height: auto !important;
+    }
+}
+.pcd-labyrinth-instruction {
+    display: block !important;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0 5px 0;
+    line-height: 1.3;
+}
